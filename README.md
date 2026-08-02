@@ -14,8 +14,8 @@ Install [GitHub CLI](https://cli.github.com/), then authenticate and clone the r
 
 ```bash
 gh auth login
-gh repo clone OWNER/engineering-team-directory
-cd engineering-team-directory
+gh repo clone https://github.com/sakshamgupta912-ms/engineering-team-directory.git
+ 
 ```
 
 Replace `OWNER` with the instructor's GitHub organization or username.
