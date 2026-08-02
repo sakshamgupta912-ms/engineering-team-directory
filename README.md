@@ -31,18 +31,15 @@ git switch -c profile/YOUR-GITHUB-USERNAME
 Copy `profiles/sample.md` to `profiles/YOUR-GITHUB-USERNAME.md`. Keep the field names unchanged and replace every value with your information.
 
 ```markdown
----
 name: Your Name
 github: your-github-username
 role: Your Role
 location: City, Country
 skills: Skill One, Skill Two, Skill Three
----
-
-Write a short introduction about yourself here.
+bio: Write a short introduction about yourself here.
 ```
 
-Required fields are `name`, `github`, `role`, `location`, and `skills`. The filename must match the GitHub username in the profile.
+Every line uses the simple `key: value` format. Required fields are `name`, `github`, `role`, `location`, `skills`, and `bio`. The filename must match the GitHub username in the profile.
 
 ### 4. Validate your work
 

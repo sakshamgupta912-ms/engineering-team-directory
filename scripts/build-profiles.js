@@ -4,17 +4,14 @@ const path = require("node:path");
 const root = path.resolve(__dirname, "..");
 const profilesDirectory = path.join(root, "profiles");
 const outputFile = path.join(root, "assets", "profiles-data.js");
-const requiredFields = ["name", "github", "role", "location", "skills"];
+const requiredFields = ["name", "github", "role", "location", "skills", "bio"];
 const profileFormat = [
-  "---",
   "name: Your Name",
   "github: your-github-username",
   "role: Your Role",
   "location: City, Country",
   "skills: Skill One, Skill Two, Skill Three",
-  "---",
-  "",
-  "Write a short introduction about yourself here.",
+  "bio: Write a short introduction about yourself here.",
 ].join("\n");
 
 function profileError(fileName, problem, fix, example) {
@@ -29,33 +26,16 @@ function profileError(fileName, problem, fix, example) {
 
 function parseProfile(fileName) {
   const source = fs.readFileSync(path.join(profilesDirectory, fileName), "utf8").trim();
-  const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n([\s\S]*))?$/);
-
-  if (!match) {
-    throw profileError(
-      fileName,
-      "The profile fields must be placed between two lines containing only ---.",
-      "Copy the format below and replace the example values with your information.",
-      profileFormat,
-    );
-  }
-
-  if (!match[2]?.trim()) {
-    throw profileError(
-      fileName,
-      "The short introduction below the second --- line is missing.",
-      "Add one or two sentences about yourself after the second --- line.",
-    );
-  }
 
   const fields = {};
-  for (const line of match[1].split(/\r?\n/)) {
+  for (const line of source.split(/\r?\n/).filter((item) => item.trim())) {
     const separator = line.indexOf(":");
     if (separator === -1) {
       throw profileError(
         fileName,
         `The line "${line}" is not written as a field and value.`,
-        "Write the line as field: value. For example: role: Consultant",
+        "Write every line as key: value. For example: role: Consultant",
+        profileFormat,
       );
     }
 
@@ -69,7 +49,8 @@ function parseProfile(fileName) {
       throw profileError(
         fileName,
         `The required field "${field}" is missing or empty.`,
-        `Add ${field}: followed by your information between the two --- lines.`,
+        `Add ${field}: followed by your information.`,
+        profileFormat,
       );
     }
   }
@@ -93,7 +74,6 @@ function parseProfile(fileName) {
 
   return {
     ...fields,
-    bio: match[2].trim(),
     skills: fields.skills.split(",").map((skill) => skill.trim()).filter(Boolean),
   };
 }
