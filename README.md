@@ -15,7 +15,6 @@ Install [GitHub CLI](https://cli.github.com/), then authenticate and clone the r
 ```bash
 gh auth login
 gh repo clone https://github.com/sakshamgupta912-ms/engineering-team-directory.git
- 
 ```
 
 Replace `OWNER` with the instructor's GitHub organization or username.
@@ -31,15 +30,15 @@ git switch -c profile/YOUR-GITHUB-USERNAME
 Copy `profiles/sample.md` to `profiles/YOUR-GITHUB-USERNAME.md`. Keep the field names unchanged and replace every value with your information.
 
 ```markdown
-name: Your Name
-github: your-github-username
-role: Your Role
-location: City, Country
-skills: Skill One, Skill Two, Skill Three
+name: Your Name  
+github: your-github-username  
+role: Your Role  
+location: City, Country  
+skills: Skill One, Skill Two, Skill Three  
 bio: Write a short introduction about yourself here.
 ```
 
-Every line uses the simple `key: value` format. Required fields are `name`, `github`, `role`, `location`, `skills`, and `bio`. The filename must match the GitHub username in the profile.
+Every line uses the simple `key: value` format. Keep the two spaces at the end of each line except the last one so Markdown viewers display every field on a separate line. Required fields are `name`, `github`, `role`, `location`, `skills`, and `bio`. The filename must match the GitHub username in the profile.
 
 ### 4. Validate your work
 
