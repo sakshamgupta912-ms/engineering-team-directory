@@ -1,6 +1,6 @@
 ---
 name: Saksham Gupta
-github: octocat
+github: sakshamgupta912
 role: Consultant
 location: Hyderabad, India
 skills: GitHub Actions, Automation, Documentation
