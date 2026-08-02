@@ -1,0 +1,26 @@
+name: Validate profiles
+
+on:
+  pull_request:
+    paths:
+      - "profiles/**"
+      - "scripts/build-profiles.js"
+      - "package.json"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validate participant profiles
+        run: npm test
