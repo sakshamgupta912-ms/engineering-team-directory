@@ -1,8 +1,7 @@
 ---
 name: Saksham Gupta
-github: sakshamgupta9121
-role: Consultant
-location: Hyderabad, India
-skills: GitHub Actions, Automation, Documentation
+github: sakshamgupta912
+role:
+location:
+skills:
 ---
-I enjoy turning complicated engineering workflows into tools that feel simple.
